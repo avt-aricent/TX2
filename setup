@@ -1,0 +1,37 @@
+# Install NVidia JetPack 3.1 (CUDA 8.0 + cuDNN 6.0 bcoz the pre-built tensorflow wheel only works with these versions).
+# Do not install OpenCV4Tegra or any other software. This installation takes hours.
+
+
+# Install python 3 pre-reqs
+-------------------------------
+sudo apt-get install -y python3-pip python3-dev
+
+
+# Install pre-built tensorflow wheel for CUDA 8.0, cuDNN 6.0 and Python 3.5 from https://github.com/jetsonhacks/installTensorFlowJetsonTX
+
+sudo pip3 install tensorflow-1.3.0-cp35-cp35m-linux_aarch64.whl
+
+
+# Install keras pre-reqs and keras
+------------------------------------
+sudo apt-get install -y libhdf5-dev
+pip3 install h5py
+
+sudo apt install libopenblas-dev libatlas-dev liblapack-dev
+sudo apt install python3-scipy
+pip3 install scipy
+
+pip3 install keras
+
+
+# Install opencv pre-reqs
+-----------------------------
+sudo apt-get install libgtk2.0-dev
+sudo apt-get install cmake
+
+# install opencv based on https://github.com/jetsonhacks/buildOpenCVTX2
+
+# In buildOpenCV.sh - set following flags
+
+    -DBUILD_opencv_python2=OFF \
+    -DBUILD_opencv_python3=ON \
